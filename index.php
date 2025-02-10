@@ -73,21 +73,8 @@
             <li><a href="#">COCHES</a>
                 <ul>
                     <li><a href="index.php">Inicio</a></li>
-                    <li><a href="coches\anadir.php">Añadir</a></li>
                     <li><a href="coches\listar.php">Listar</a></li>
                     <li><a href="coches\buscar.php">Buscar</a></li>
-                    <li><a href="coches\modificar.php">Modificar</a></li>
-                    <li><a href="coches\borrar.php">Borrar</a></li>
-                </ul>
-            </li>
-            <li><a href="#">USUARIOS</a>
-                <ul>
-                    <li><a href="index.php">Inicio</a></li>
-                    <li><a href="usuarios\anadir.php">Añadir</a></li>
-                    <li><a href="usuarios\listar.php">Listar</a></li>
-                    <li><a href="usuarios\buscar.php">Buscar</a></li>
-                    <li><a href="usuarios\modificar.php">Modificar</a></li>
-                    <li><a href="usuarios\borrar.php">Borrar</a></li>
                 </ul>
             </li>
             <li><a href="#">ALQUILERES</a>
@@ -97,6 +84,8 @@
                     <li><a href="alquileres\borrar.php">Borrar</a></li>
                 </ul>
             </li>
+            <li><a href="registro\registro.php">Regístrate</a>
+            <li><a href="login\login.php">Inicia Sesión</a>
         </ul>
     </nav>
     <div class="content">
