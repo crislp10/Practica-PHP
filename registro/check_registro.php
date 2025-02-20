@@ -13,7 +13,10 @@
 
 	<?php
 
-	include '..\includes\conn.php';
+$servername = "localhost";
+$username = "root";
+$password = "rootroot";
+$dbname = "concesionario";
 
 	$conn = mysqli_connect($servername, $username, $password, $dbname);
 
@@ -23,18 +26,16 @@
 	}
 	
 		
-	$nombre = mysql_real_escape_string($_POST['nombre']);
-    $apellidos = mysql_real_escape_string($_POST['apellidos']);
-	$email = mysql_real_escape_string($_POST['email']);
-	$password = mysql_real_escape_string($_POST['password']);
-    $password_hash = password_hash($password, PASSWORD_DEFAULT);
-    $dni = mysql_real_escape_string($_POST['dni']);
+	$nombre = mysqli_real_escape_string($conn, $_POST["nombre"]);
+    $apellidos = mysqli_real_escape_string($conn, $_POST["apellidos"]);
+    $email = mysqli_real_escape_string($conn, $_POST["email"]);
+    $dni = mysqli_real_escape_string($conn, $_POST["dni"]);
+    $password_hash = password_hash($_POST["password"], PASSWORD_DEFAULT);
 	
-	
-	$query = "INSERT INTO usuarios (password, nombre, apellidos, dni, email) VALUES ('$password_hash', '$nombre', '$apellidos', '$dni', '$email')";
+	$query = "INSERT INTO usuarios (password, nombre, apellidos, dni, email) VALUES ('$password_hash', '$nombre', '$apellidos', '$dni', '$email');";
 
 	if (mysqli_query($conn, $query)) {
-		echo "<div><h3>GET OUT.</h3>
+		echo "<div><h3>Usuario registrado con exito.</h3>
 		<a href='login.html' >Login</a></div>";		
 		} else {
 			echo "Error: " . $query . "<br>" . mysqli_error($conn);

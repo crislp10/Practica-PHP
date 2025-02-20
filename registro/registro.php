@@ -11,10 +11,10 @@
 	<h2>Regístrate</h2>
 	<form method="post" action="check_registro.php" method="POST">
 		<input type="text"  name="nombre" placeholder="Introduce tu nombre" required>
-        <input type="text"  name="apellidos" placeholder="Introduce tu nombre" required>			
-		<input type="email"  name="email"  placeholder="Introduce tu email" required>
-		<input type="password"  name="password" placeholder="Introduce Password" required>
-        <input type="text"  name="dni" placeholder="Introduce DNI" required>
+        <input type="text"  name="apellidos" placeholder="Introduce tus apellidos" required>			
+		<input type="email"  name="email"  placeholder="Introduce un email" required>
+		<input type="password"  name="password" placeholder="Introduce una contraseña" required>
+        <input type="text"  name="dni" placeholder="Introduce tu DNI" required>
   		<button type="submit">Crear una cuenta</button>
 		</form>		
 		<h3>Log in</h3><hr />
