@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Insertar Usuarios</title>
-    <style>
-    </style>
+    <link rel="stylesheet" href="../css/text.css">
 </head>
 <body>
 
@@ -30,13 +29,15 @@ $dbname = "concesionario";
     $apellidos = mysqli_real_escape_string($conn, $_POST["apellidos"]);
     $email = mysqli_real_escape_string($conn, $_POST["email"]);
     $dni = mysqli_real_escape_string($conn, $_POST["dni"]);
+	$saldo = mysqli_real_escape_string($conn, $_POST["saldo"]);
     $password_hash = password_hash($_POST["password"], PASSWORD_DEFAULT);
+	$tipo_usuario = $_POST['tipo_usuario'];
 	
-	$query = "INSERT INTO usuarios (password, nombre, apellidos, dni, email) VALUES ('$password_hash', '$nombre', '$apellidos', '$dni', '$email');";
+	$query = "INSERT INTO usuarios (password, nombre, apellidos, dni, saldo, tipo_usuario, email) VALUES ('$password_hash', '$nombre', '$apellidos', '$dni', '$saldo', '$tipo_usuario', '$email');";
 
 	if (mysqli_query($conn, $query)) {
 		echo "<div><h3>Usuario registrado con exito.</h3>
-		<a href='login.html' >Login</a></div>";		
+		<a href='..\login\login.php'>Iniciar Sesión</a></div>";
 		} else {
 			echo "Error: " . $query . "<br>" . mysqli_error($conn);
 		}	

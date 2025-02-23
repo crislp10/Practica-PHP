@@ -1,53 +1,45 @@
 <?php
 session_start();
+$_SESSION['error'] = "";
+
+$servername = "localhost";
+$username = "root";
+$password = "rootroot";
+$dbname = "concesionario";
+
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+if (!$conn)
+{
+    die("Conexión fallida: " . mysqli_connect_error());
+}
+$email = mysqli_real_escape_string($conn,$_REQUEST["email"]);
+$passw = mysqli_real_escape_string($conn,$_REQUEST["password"]);
+
+$sql = "SELECT * FROM usuarios WHERE email='$email'";
+$res = mysqli_query($conn,$sql);
+
+if ($res && mysqli_num_rows($res) > 0) {
+    $row = mysqli_fetch_assoc($res);
+
+    if (password_verify($passw, $row['password'])) {
+        $_SESSION['id_usuario'] = $row['id_usuario'];
+        $_SESSION['nombre'] = $row['nombre'];
+        $_SESSION['apellidos'] = $row['apellidos'];
+		$_SESSION['dni'] = $row['dni'];
+		$_SESSION['saldo'] = $row['saldo'];
+        $_SESSION['tipo_usuario'] = $row['tipo_usuario'];
+        $_SESSION['email'] = $row['email'];
+        
+
+        header('Location: ../index.php');
+        exit();
+    } else {
+        $_SESSION['error'] = "Contraseña incorrecta.";
+    }
+} else {
+    $_SESSION['error'] = "Email no encontrado.";
+}
+
+header('Location: login.php');
+exit();
 ?>
-
-<!doctype html>
-<html lang="en">
-  <head>
-    <title>Check Login and create session</title>
-  </head>
-  
-  <body>  
-  <div >
-<?php
-	// Connection info. file
-	include 'conn.php';	
-	
-	$conn = mysqli_connect($dbhost, $dbuser, $dbpass, $dbname);
-
-	if (!$conn) {
-		die("Connection failed: " . mysqli_connect_error());
-	}
-	
-	$email = $_POST['email']; 
-	$password = $_POST['password'];
-	
-	$result = mysqli_query($conn, "SELECT Email, Password, Name FROM users WHERE Email = '$email'");
-	
-	$row = mysqli_fetch_assoc($result);
-	
-	// Variable $hash hold the password hash on database
-	$hash = $row['Password'];
-	
-	
-	if ($_POST['password']== $hash) {	
-		$_SESSION['loggedin'] = true;
-		$_SESSION['name'] = $row['Name'];
-		$_SESSION['start'] = time();
-		$_SESSION['expire'] = $_SESSION['start'] + (1 * 60) ;						
-		
-		echo "<strong>Bienvenido!</strong> $row[Name] <p><a href='edit-profile.php'>Editar Ficha</a></p>	
-		<p><a href='logout.php'>Logout</a></p></div>";	
-	
-	} else {
-		echo "<div >Email o Password incorrectos!
-		<p><a href='login.html'><strong>¡Intentalo de nuevo!</strong></a></p></div>";			
-	}	
-?>
-</div>
-
-	
-
-	</body>
-</html>

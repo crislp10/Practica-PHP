@@ -4,14 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Insertar Usuarios</title>
-    <style>
-    </style>
+    <link rel="stylesheet" href="../css/text.css">
 </head>
 <body>
 	<h2>Iniciar Sesión</h2>
-    <form action="check-login.php" method="post">                           	
+    <form action="check_login.php" method="post">                           	
 		<div>									
-		<input type="email"  name="email" placeholder="Email" required>        
+		<input type="text"  name="email" placeholder="Email" required>        
 		</div>							
 		<div >        
 		<input type="password" class="form-control input-lg" name="password" placeholder="Password" required>       
