@@ -1,4 +1,7 @@
 <?php
+session_start();
+?>
+<?php
 // Configuración de la base de datos
 $servername = "localhost";
 $username = "root";
@@ -53,8 +56,10 @@ $result = mysqli_query($conn, $sql);
                     <li><a href="..\index.php">Inicio</a></li>
                     <li><a href="..\alquileres\listar.php">Listar</a></li>
                     <li><a href="..\alquileres\borrar.php">Borrar</a></li>
+                    <li><a href='..\alquileres\alquileres.php'>Alquileres</a></li>
                 </ul>
             </li>
+            <li><a href='..\logout\logout.php'>Cerrarr sesión</a>
         </ul>
     </nav>
 

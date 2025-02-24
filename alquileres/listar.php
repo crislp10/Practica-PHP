@@ -1,8 +1,5 @@
 <?php
 session_start();
-echo "<pre>";
-print_r($_SESSION);
-echo "</pre>";
 
 // Configuración de la base de datos
 $servername = "localhost";
@@ -27,9 +24,6 @@ $result = mysqli_query($conn, $sql);
     <link rel="stylesheet" href="..\css/text.css">
 </head>
 <?php
-echo "<pre>";
-print_r($_SESSION);
-echo "</pre>";
 
 if (isset($_SESSION['id_usuario'])) {
     if ($_SESSION['tipo_usuario'] === 'administrador') {
@@ -39,33 +33,33 @@ if (isset($_SESSION['id_usuario'])) {
                         <li><a href='#'>COCHES</a>
                             <ul>
                                 <li><a href='..\index.php'>Inicio</a></li>
-                                <li><a href='coches\anadir.php'>Añadir</a></li>
-                                <li><a href='coches\listar.php'>Listar</a></li>
-                                <li><a href='coches\buscar.php'>Buscar</a></li>
-                                <li><a href='coches\modificar.php'>Modificar</a></li>
-                                <li><a href='coches\borrar.php'>Borrar</a></li>
+                                <li><a href='..\coches\anadir.php'>Añadir</a></li>
+                                <li><a href='..\coches\listar.php'>Listar</a></li>
+                                <li><a href='..\coches\buscar.php'>Buscar</a></li>
+                                <li><a href='..\coches\modificar.php'>Modificar</a></li>
+                                <li><a href='..\coches\borrar.php'>Borrar</a></li>
                             </ul>
                         </li>
                         <li><a href='#'>USUARIOS</a>
                             <ul>
                                 <li><a href='..\index.php'>Inicio</a></li>
-                                <li><a href='usuarios\anadir.php'>Añadir</a></li>
-                                <li><a href='usuarios\listar.php'>Listar</a></li>
-                                <li><a href='usuarios\buscar.php'>Buscar</a></li>
-                                <li><a href='usuarios\modificar.php'>Modificar</a></li>
-                                <li><a href='usuarios\borrar.php'>Borrar</a></li>
+                                <li><a href='..\usuarios\anadir.php'>Añadir</a></li>
+                                <li><a href='..\usuarios\listar.php'>Listar</a></li>
+                                <li><a href='..\usuarios\buscar.php'>Buscar</a></li>
+                                <li><a href='..\usuarios\modificar.php'>Modificar</a></li>
+                                <li><a href='..\usuarios\borrar.php'>Borrar</a></li>
                             </ul>
                         </li>
                         <li><a href='#'>ALQUILERES</a>
                             <ul>
                                 <li><a href='..\index.php'>Inicio</a></li>
-                                <li><a href='alquileres\listar.php'>Listar</a></li>
-                                <li><a href='alquileres\borrar.php'>Borrar</a></li>
+                                <li><a href='..\alquileres\listar.php'>Listar</a></li>
+                                <li><a href='..\alquileres\borrar.php'>Borrar</a></li>
+                                <li><a href='..\alquileres\alquileres.php'>Alquileres</a></li>
                             </ul>
                         </li>
                         </li>
-                        <li><a href='registro\_registro.php'>Regístrate</a>
-                        <li><a href='login\login.php'>Inicia Sesión</a>
+                        <li><a href='..\logout\logout.php'>Cerrarr sesión</a>
                     </ul>
                 </nav>";
     } elseif ($_SESSION['tipo_usuario'] === 'vendedor') {
@@ -75,23 +69,19 @@ if (isset($_SESSION['id_usuario'])) {
                         <li><a href='#'>COCHES</a>
                             <ul>
                                 <li><a href='..\index.php'>Inicio</a></li>
-                                <li><a href='coches\anadir.php'>Añadir</a></li>
-                                <li><a href='coches\listar.php'>Listar</a></li>
-                                <li><a href='coches\buscar.php'>Buscar</a></li>
-                                <li><a href='coches\modificar.php'>Modificar</a></li>
-                                <li><a href='coches\borrar.php'>Borrar</a></li>
+                                <li><a href='..\coches\anadir.php'>Añadir</a></li>
+                                <li><a href='..\coches\listar.php'>Listar</a></li>
+                                <li><a href='..\coches\buscar.php'>Buscar</a></li>
                             </ul>
                         </li>
                         <li><a href='#'>ALQUILERES</a>
                             <ul>
                                 <li><a href='..\index.php'>Inicio</a></li>
-                                <li><a href='alquileres\listar.php'>Listar</a></li>
-                                <li><a href='alquileres\borrar.php'>Borrar</a></li>
+                                <li><a href='..\alquileres\listar.php'>Listar</a></li>
                             </ul>
                         </li>
                         </li>
-                        <li><a href='registro\_registro.php'>Regístrate</a>
-                        <li><a href='login\login.php'>Inicia Sesión</a>
+                        <li><a href='..\logout\logout.php'>Cerrarr sesión</a>
                     </ul>
                 </nav>";
     } elseif ($_SESSION['tipo_usuario'] === 'comprador') {
@@ -101,33 +91,18 @@ if (isset($_SESSION['id_usuario'])) {
                         <li><a href='#'>COCHES</a>
                             <ul>
                                 <li><a href='..\index.php'>Inicio</a></li>
-                                <li><a href='coches\listar.php'>Listar</a></li>
-                                <li><a href='coches\buscar.php'>Buscar</a></li>
+                                <li><a href='..\coches\listar.php'>Listar</a></li>
+                                <li><a href='..\coches\buscar.php'>Buscar</a></li>
                             </ul>
                         </li>
                         <li><a href='#'>ALQUILERES</a>
                             <ul>
                                 <li><a href='..\index.php'>Inicio</a></li>
-                                <li><a href='alquileres\listar.php'>Listar</a></li>
+                                <li><a href='..\alquileres\listar.php'>Listar</a></li>
+                                <li><a href='..\alquileres\alquileres.php'>Alquileres</a></li>
                             </ul>
                         </li>
-                        <li><a href='registro\_registro.php'>Regístrate</a>
-                        <li><a href='login\login.php'>Inicia Sesión</a>
-                    </ul>
-                </nav>";
-    } elseif ($_SESSION['tipo_usuario'] === ''){
-        echo "<body>
-                <nav>
-                    <ul>
-                        <li><a href='#'>COCHES</a>
-                            <ul>
-                                <li><a href='..\index.php'>Inicio</a></li>
-                                <li><a href='coches\listar.php'>Listar</a></li>
-                                <li><a href='coches\buscar.php'>Buscar</a></li>
-                            </ul>
-                        </li>
-                        <li><a href='registro\_registro.php'>Regístrate</a>
-                        <li><a href='login\login.php'>Inicia Sesión</a>
+                        <li><a href='..\logout\logout.php'>Cerrarr sesión</a>
                     </ul>
                 </nav>";
     } else {
@@ -142,8 +117,8 @@ if (isset($_SESSION['id_usuario'])) {
                     <li><a href='#'>COCHES</a>
                         <ul>
                             <li><a href='..\index.php'>Inicio</a></li>
-                            <li><a href='coches\listar.php'>Listar</a></li>
-                            <li><a href='coches\buscar.php'>Buscar</a></li>
+                            <li><a href='..\coches\listar.php'>Listar</a></li>
+                            <li><a href='..\coches\buscar.php'>Buscar</a></li>
                         </ul>
                     </li>
                     <li><a href='registro\_registro.php'>Regístrate</a>
@@ -154,6 +129,7 @@ if (isset($_SESSION['id_usuario'])) {
 ?>
     <div class="content">
         <h1>Lista de Alquileres</h1>
+        <h2>Sesión iniciada como: <?php echo $_SESSION['nombre']; ?></h2>
         <table>
             <tr>
                 <th>Prestado</th>

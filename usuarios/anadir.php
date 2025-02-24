@@ -1,3 +1,6 @@
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -34,8 +37,10 @@
                     <li><a href="..\index.php">Inicio</a></li>
                     <li><a href="..\alquileres\listar.php">Listar</a></li>
                     <li><a href="..\alquileres\borrar.php">Borrar</a></li>
+                    <li><a href='..\alquileres\alquileres.php'>Alquileres</a></li>
                 </ul>
             </li>
+            <li><a href='..\logout\logout.php'>Cerrarr sesión</a>
         </ul>
     </nav>
 

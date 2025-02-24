@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="../css/text.css">
 </head>
 <body>
+<div class='content'>
 	<h2>Iniciar Sesión</h2>
     <form action="check_login.php" method="post">                           	
 		<div>									
@@ -19,6 +20,6 @@
 		<br>
 		</form>						
 		<hr><p>¿Eres nuevo? <a href="..\registro\registro.php" title="Create an account">Crear una cuenta</a>.</p>								
-	
+</div>
 </body>
 </html>

@@ -10,10 +10,6 @@ session_start();
     <link rel="stylesheet" href="css/text.css">
 </head>
 <?php
-echo "<pre>";
-print_r($_SESSION);
-echo "</pre>";
-
 if (isset($_SESSION['id_usuario'])) {
     if ($_SESSION['tipo_usuario'] === 'administrador') {
         echo "<body>
@@ -44,16 +40,17 @@ if (isset($_SESSION['id_usuario'])) {
                                 <li><a href='index.php'>Inicio</a></li>
                                 <li><a href='alquileres\listar.php'>Listar</a></li>
                                 <li><a href='alquileres\borrar.php'>Borrar</a></li>
+                                <li><a href='alquileres\alquileres.php'>Alquileres</a></li>
                             </ul>
                         </li>
                         </li>
-                        <li><a href='registro\_registro.php'>Regístrate</a>
-                        <li><a href='login\login.php'>Inicia Sesión</a>
+                        <li><a href='..\logout\logout.php'>Cerrar sesión</a>
                     </ul>
                 </nav>
                 <div class='content'>
                     <h1>Bienvenido al Concesionario</h1>
-                    <p>Utiliza los menús desplegables para gestionar los coches, usuarios y alquileres.</p>
+                    <h2>Sesion iniciada como:" . $_SESSION['nombre'] . "</h2>
+                    <p>Utiliza los menús desplegables para navegar.</p>
                 </div>
               </body>
               </html>";
@@ -67,25 +64,22 @@ if (isset($_SESSION['id_usuario'])) {
                                 <li><a href='coches\anadir.php'>Añadir</a></li>
                                 <li><a href='coches\listar.php'>Listar</a></li>
                                 <li><a href='coches\buscar.php'>Buscar</a></li>
-                                <li><a href='coches\modificar.php'>Modificar</a></li>
-                                <li><a href='coches\borrar.php'>Borrar</a></li>
                             </ul>
                         </li>
                         <li><a href='#'>ALQUILERES</a>
                             <ul>
                                 <li><a href='index.php'>Inicio</a></li>
                                 <li><a href='alquileres\listar.php'>Listar</a></li>
-                                <li><a href='alquileres\borrar.php'>Borrar</a></li>
                             </ul>
                         </li>
                         </li>
-                        <li><a href='registro\_registro.php'>Regístrate</a>
-                        <li><a href='login\login.php'>Inicia Sesión</a>
+                        <li><a href='..\logout\logout.php'>Cerrarr sesión</a>
                     </ul>
                 </nav>
                 <div class='content'>
                     <h1>Bienvenido al Concesionario</h1>
-                    <p>Utiliza los menús desplegables para gestionar los coches, usuarios y alquileres.</p>
+                    <h2>Sesion iniciada como:" . $_SESSION['nombre'] . "</h2>
+                    <p>Utiliza los menús desplegables para navegar.</p>
                 </div>
               </body>
               </html>";
@@ -107,37 +101,16 @@ if (isset($_SESSION['id_usuario'])) {
                                 <li><a href='alquileres\alquileres.php'>Alquileres</a></li>
                             </ul>
                         </li>
-                        <li><a href='registro\_registro.php'>Regístrate</a>
-                        <li><a href='login\login.php'>Inicia Sesión</a>
+                        <li><a href='logout\logout.php'>Cerrar sesión</a>
                     </ul>
                 </nav>
                 <div class='content'>
                     <h1>Bienvenido al Concesionario</h1>
-                    <p>Utiliza los menús desplegables para gestionar los coches, usuarios y alquileres.</p>
+                    <h2>Sesion iniciada como:" . $_SESSION['nombre'] . "</h2>
+                    <p>Utiliza los menús desplegables para navegar.</p>
                 </div>
               </body>
               </html>";
-    } elseif ($_SESSION['tipo_usuario'] === ''){
-        echo "<body>
-                <nav>
-                    <ul>
-                        <li><a href='#'>COCHES</a>
-                            <ul>
-                                <li><a href='index.php'>Inicio</a></li>
-                                <li><a href='coches\listar.php'>Listar</a></li>
-                                <li><a href='coches\buscar.php'>Buscar</a></li>
-                            </ul>
-                        </li>
-                        <li><a href='registro\_registro.php'>Regístrate</a>
-                        <li><a href='login\login.php'>Inicia Sesión</a>
-                    </ul>
-                </nav>
-                <div class='content'>
-                    <h1>Bienvenido al Concesionario</h1>
-                    <p>Utiliza los menús desplegables para gestionar los coches, usuarios y alquileres.</p>
-                </div>
-            </body>
-            </html>";
     } else {
         session_destroy();
         header("Location: index.php");
@@ -154,13 +127,13 @@ if (isset($_SESSION['id_usuario'])) {
                             <li><a href='coches\buscar.php'>Buscar</a></li>
                         </ul>
                     </li>
-                    <li><a href='registro\_registro.php'>Regístrate</a>
+                    <li><a href='_registro\_registro.php'>Regístrate</a>
                     <li><a href='login\login.php'>Inicia Sesión</a>
                 </ul>
             </nav>
             <div class='content'>
                 <h1>Bienvenido al Concesionario</h1>
-                <p>Utiliza los menús desplegables para gestionar los coches, usuarios y alquileres.</p>
+                <p>Utiliza los menús desplegables para navegar.</p>
             </div>
           </body>
           </html>";

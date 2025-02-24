@@ -24,9 +24,6 @@ $result = mysqli_query($conn, $sql);
     <link rel="stylesheet" href="..\css/text.css">
 </head>
 <?php
-echo "<pre>";
-print_r($_SESSION);
-echo "</pre>";
 
 if (isset($_SESSION['id_usuario'])) {
     if ($_SESSION['tipo_usuario'] === 'administrador') {
@@ -36,33 +33,33 @@ if (isset($_SESSION['id_usuario'])) {
                         <li><a href='#'>COCHES</a>
                             <ul>
                                 <li><a href='..\index.php'>Inicio</a></li>
-                                <li><a href='coches\anadir.php'>Añadir</a></li>
-                                <li><a href='coches\listar.php'>Listar</a></li>
-                                <li><a href='coches\buscar.php'>Buscar</a></li>
-                                <li><a href='coches\modificar.php'>Modificar</a></li>
-                                <li><a href='coches\borrar.php'>Borrar</a></li>
+                                <li><a href='..\coches\anadir.php'>Añadir</a></li>
+                                <li><a href='..\coches\listar.php'>Listar</a></li>
+                                <li><a href='..\coches\buscar.php'>Buscar</a></li>
+                                <li><a href='..\coches\modificar.php'>Modificar</a></li>
+                                <li><a href='..\coches\borrar.php'>Borrar</a></li>
                             </ul>
                         </li>
                         <li><a href='#'>USUARIOS</a>
                             <ul>
                                 <li><a href='..\index.php'>Inicio</a></li>
-                                <li><a href='usuarios\anadir.php'>Añadir</a></li>
-                                <li><a href='usuarios\listar.php'>Listar</a></li>
-                                <li><a href='usuarios\buscar.php'>Buscar</a></li>
-                                <li><a href='usuarios\modificar.php'>Modificar</a></li>
-                                <li><a href='usuarios\borrar.php'>Borrar</a></li>
+                                <li><a href='..\usuarios\anadir.php'>Añadir</a></li>
+                                <li><a href='..\usuarios\listar.php'>Listar</a></li>
+                                <li><a href='..\usuarios\buscar.php'>Buscar</a></li>
+                                <li><a href='..\usuarios\modificar.php'>Modificar</a></li>
+                                <li><a href='..\usuarios\borrar.php'>Borrar</a></li>
                             </ul>
                         </li>
                         <li><a href='#'>ALQUILERES</a>
                             <ul>
                                 <li><a href='..\index.php'>Inicio</a></li>
-                                <li><a href='alquileres\listar.php'>Listar</a></li>
-                                <li><a href='alquileres\borrar.php'>Borrar</a></li>
+                                <li><a href='..\alquileres\listar.php'>Listar</a></li>
+                                <li><a href='..\alquileres\borrar.php'>Borrar</a></li>
+                                <li><a href='..\alquileres\alquileres.php'>Alquileres</a></li>
                             </ul>
                         </li>
                         </li>
-                        <li><a href='registro\_registro.php'>Regístrate</a>
-                        <li><a href='login\login.php'>Inicia Sesión</a>
+                        <li><a href='..\logout\logout.php'>Cerrar sesión</a>
                     </ul>
                 </nav>";
     } elseif ($_SESSION['tipo_usuario'] === 'comprador') {
@@ -79,11 +76,11 @@ if (isset($_SESSION['id_usuario'])) {
                         <li><a href='#'>ALQUILERES</a>
                             <ul>
                                 <li><a href='..\index.php'>Inicio</a></li>
-                                <li><a href='alquileres\listar.php'>Listar</a></li>
+                                <li><a href='..\alquileres\listar.php'>Listar</a></li>
+                                <li><a href='..\alquileres\alquileres.php'>Alquileres</a></li>
                             </ul>
                         </li>
-                        <li><a href='registro\_registro.php'>Regístrate</a>
-                        <li><a href='login\login.php'>Inicia Sesión</a>
+                        <li><a href='..\logout\logout.php'>Cerrar sesión</a>
                     </ul>
                 </nav>";
     } else {
@@ -91,25 +88,11 @@ if (isset($_SESSION['id_usuario'])) {
         header("Location: ..\index.php");
         exit();
     }
-} else {
-    echo "<body>
-            <nav>
-                <ul>
-                    <li><a href='#'>COCHES</a>
-                        <ul>
-                            <li><a href='..\index.php'>Inicio</a></li>
-                            <li><a href='..\coches\listar.php'>Listar</a></li>
-                            <li><a href='..\coches\buscar.php'>Buscar</a></li>
-                        </ul>
-                    </li>
-                    <li><a href='registro\_registro.php'>Regístrate</a>
-                    <li><a href='login\login.php'>Inicia Sesión</a>
-                </ul>
-            </nav>";
 }
 ?>
     <div class="content">
-        <h1>Lista de Coches</h1>
+        <h1>Lista de Alquileres Disponibles</h1>
+        <h2>Sesión iniciada como: <?php echo $_SESSION['nombre']; ?></h2>
         <table>
             <tr>
                 <th>Modelo</th>
@@ -117,7 +100,7 @@ if (isset($_SESSION['id_usuario'])) {
                 <th>Color</th>
                 <th>Precio</th>
                 <th>Foto</th>
-                <th>ID</th>
+                <th>Acción</th>
             </tr>
             <?php
             $nfilas = mysqli_num_rows($result);
@@ -130,20 +113,19 @@ if (isset($_SESSION['id_usuario'])) {
                 print ("<TD>" . $resultado[3] . "</TD>\n");
                 print ("<TD>" . $resultado[4] . " €</TD>\n");
                 print ("<TD><img src='" . $resultado[6] . "'></TD>\n");
-                print ("<TD>" . $resultado[0] . "</TD>\n");
                 print ("<TD>
-    <form action='alquilar.php' method='POST'>
-        <input type='hidden' name='id_coche' value='" . $resultado[0] . "'>
-        <button type='submit'>Alquilar</button>
-    </form>
-</TD>\n");
+                        <form action='alquilar.php' method='POST'>
+                            <input type='hidden' name='id_coche' value='" . $resultado[0] . "'>
+                            <button type='submit'>Alquilar</button>
+                        </form>
+                        </TD>\n");
                 print ("</TR>\n");
              }
 
             print ("</TABLE>\n");
             
             } else {
-                echo "No se encontró el coche.";
+                echo "<p>No se encontró ningún coche disponible.</p>";
             }
 
             mysqli_close($conn);
