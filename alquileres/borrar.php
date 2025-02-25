@@ -15,7 +15,7 @@ if (!$conn) {
     die("Conexión fallida: " . mysqli_connect_error());
 }
 
-$sql = "SELECT * FROM coches";
+$sql = "SELECT * FROM alquileres";
 $result = mysqli_query($conn, $sql);
 
 ?>
@@ -25,7 +25,7 @@ $result = mysqli_query($conn, $sql);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Borrar Coches</title>
-    <link rel="stylesheet" href="..\css/text.css">
+    <link rel="stylesheet" href="..\css\text.css">
 </head>
 <?php
 
@@ -63,7 +63,7 @@ if (isset($_SESSION['id_usuario'])) {
                             </ul>
                         </li>
                         </li>
-                        <li><a href='..\logout\logout.php'>Cerrarr sesión</a>
+                        <li><a href='..\logout\logout.php'>Cerrar sesión</a>
                     </ul>
                 </nav>";
     } elseif ($_SESSION['tipo_usuario'] === 'vendedor') {
@@ -85,8 +85,7 @@ if (isset($_SESSION['id_usuario'])) {
                             </ul>
                         </li>
                         </li>
-                        <li><a href='registro\_registro.php'>Regístrate</a>
-                        <li><a href='..\logout\logout.php'>Cerrarr sesión</a>
+                        <li><a href='..\logout\logout.php'>Cerrar sesión</a>
                     </ul>
                 </nav>";
     } else {
@@ -105,8 +104,8 @@ if (isset($_SESSION['id_usuario'])) {
                             <li><a href='..\coches\buscar.php'>Buscar</a></li>
                         </ul>
                     </li>
-                    <li><a href='registro\_registro.php'>Regístrate</a>
-                    <li><a href='login\login.php'>Inicia Sesión</a>
+                    <li><a href='..\_registro\_registro.php'>Regístrate</a>
+                    <li><a href='..\login\login.php'>Inicia Sesión</a>
                 </ul>
             </nav>";
 }
@@ -120,6 +119,9 @@ if (isset($_SESSION['id_usuario'])) {
         echo "<table>";
         echo "<tr>";
         echo "<th>Borrar</th>";
+        echo "<th>ID_Alquiler</th>";
+        echo "<th>ID_Usuario</th>";
+        echo "<th>ID_Coche</th>";
         echo "<th>Prestado</th>";
         echo "<th>Devuelto</th>";
         echo "</tr>";
@@ -128,6 +130,9 @@ if (isset($_SESSION['id_usuario'])) {
         while ($row = mysqli_fetch_assoc($result)) {
             echo "<tr>";
             echo "<td><input type='checkbox' name='delete_ids[]' value='" . $row['id_alquiler'] . "'></td>";
+            echo "<td>" . htmlspecialchars($row['id_alquiler']) . "</td>";
+            echo "<td>" . htmlspecialchars($row['id_usuario']) . "</td>";
+            echo "<td>" . htmlspecialchars($row['id_coche']) . "</td>";
             echo "<td>" . htmlspecialchars($row['prestado']) . "</td>";
             echo "<td>" . htmlspecialchars($row['devuelto']) . "</td>";
             echo "</tr>";

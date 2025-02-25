@@ -19,7 +19,7 @@
 		<button type="submit" >Log in</button>        
 		<br>
 		</form>						
-		<hr><p>¿Eres nuevo? <a href="..\registro\registro.php" title="Create an account">Crear una cuenta</a>.</p>								
+		<hr><p>¿Eres nuevo? <a href="..\_registro\_registro.php" title="Create an account">Crea una cuenta</a>.</p>								
 </div>
 </body>
 </html>

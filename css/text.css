@@ -56,7 +56,8 @@ nav ul li ul li a:hover {
     text-align: center;
 }
 img {
-    width:100%;
+    width:25%;
+    height:25%;
 }
 table {
     margin: auto;

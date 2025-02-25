@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Insertar Usuarios</title>
-    <link rel="stylesheet" href="../css/text.css">
-</head>
+    <link rel="stylesheet" href="..\css\text.css"></head>
 <body>
 <div class="content">
 	<h2>Regístrate</h2>
@@ -35,7 +34,7 @@
   		<button type="submit">Crear una cuenta</button>
 		</form>		
 		<h3>Log in</h3><hr />
-        <p>¿Tienes ya una cuenta? <a href="..\login\login.php" title="Login Here">Login Aquí!</a></p>
+        <p>¿Tienes una cuenta ya? <a href="..\login\login.php" title="Login Here">Inicia sesión</a></p>
 </div>
 </body>
 </html>

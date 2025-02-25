@@ -21,7 +21,13 @@ $result = mysqli_query($conn, $sql);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Listar Coches</title>
-    <link rel="stylesheet" href="..\css/text.css">
+    <link rel="stylesheet" href="..\css\text.css">
+    <style>
+    img {
+        width:25%;
+        height:25%;
+    }
+    </style>
 </head>
 <?php
 
@@ -112,7 +118,7 @@ if (isset($_SESSION['id_usuario'])) {
                 print ("<TD>" . $resultado[2] . "</TD>\n");
                 print ("<TD>" . $resultado[3] . "</TD>\n");
                 print ("<TD>" . $resultado[4] . " €</TD>\n");
-                print ("<TD><img src='" . $resultado[6] . "'></TD>\n");
+                print ("<TD><img src='../coches/" . $resultado[6] . "'></TD>\n");
                 print ("<TD>
                         <form action='alquilar.php' method='POST'>
                             <input type='hidden' name='id_coche' value='" . $resultado[0] . "'>

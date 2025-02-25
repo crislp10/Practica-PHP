@@ -1,5 +1,22 @@
 <?php
 session_start();
+$_SESSION['error'] = "";
+
+$servername = "localhost";
+$username = "root";
+$password = "rootroot";
+$dbname = "concesionario";
+
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+if (!$conn)
+{
+    die("Conexión fallida: " . mysqli_connect_error());
+}
+$id =$_SESSION['id_usuario'];
+$sql = "SELECT * FROM usuarios WHERE id_usuario=$id";
+$res = mysqli_query($conn,$sql);
+
+$row = mysqli_fetch_assoc($res);
 ?>
 <!DOCTYPE html>
 <html lang="es">
@@ -7,7 +24,8 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Concesionario</title>
-    <link rel="stylesheet" href="css/text.css">
+    <link rel="stylesheet" href="css\text.css">
+    
 </head>
 <?php
 if (isset($_SESSION['id_usuario'])) {
@@ -44,12 +62,12 @@ if (isset($_SESSION['id_usuario'])) {
                             </ul>
                         </li>
                         </li>
-                        <li><a href='..\logout\logout.php'>Cerrar sesión</a>
+                        <li><a href='logout\logout.php'>Cerrar sesión</a>
                     </ul>
                 </nav>
                 <div class='content'>
                     <h1>Bienvenido al Concesionario</h1>
-                    <h2>Sesion iniciada como:" . $_SESSION['nombre'] . "</h2>
+                    <h2>Sesion iniciada como: " . $_SESSION['nombre'] . "</h2>
                     <p>Utiliza los menús desplegables para navegar.</p>
                 </div>
               </body>
@@ -73,12 +91,12 @@ if (isset($_SESSION['id_usuario'])) {
                             </ul>
                         </li>
                         </li>
-                        <li><a href='..\logout\logout.php'>Cerrarr sesión</a>
+                        <li><a href='logout\logout.php'>Cerrar sesión</a>
                     </ul>
                 </nav>
                 <div class='content'>
                     <h1>Bienvenido al Concesionario</h1>
-                    <h2>Sesion iniciada como:" . $_SESSION['nombre'] . "</h2>
+                    <h2>Sesion iniciada como: " . $_SESSION['nombre'] . "</h2>
                     <p>Utiliza los menús desplegables para navegar.</p>
                 </div>
               </body>
@@ -106,7 +124,8 @@ if (isset($_SESSION['id_usuario'])) {
                 </nav>
                 <div class='content'>
                     <h1>Bienvenido al Concesionario</h1>
-                    <h2>Sesion iniciada como:" . $_SESSION['nombre'] . "</h2>
+                    <h2>Sesion iniciada como: " . $_SESSION['nombre'] . "</h2>
+                    <h2>Saldo actual: " . $row['saldo'] . " €</h2>
                     <p>Utiliza los menús desplegables para navegar.</p>
                 </div>
               </body>
@@ -124,7 +143,7 @@ if (isset($_SESSION['id_usuario'])) {
                         <ul>
                             <li><a href='index.php'>Inicio</a></li>
                             <li><a href='coches\listar.php'>Listar</a></li>
-                            <li><a href='coches\buscar.php'>Buscar</a></li>
+                            <li><a href='coches\buscar.php'>Buscarr</a></li>
                         </ul>
                     </li>
                     <li><a href='_registro\_registro.php'>Regístrate</a>

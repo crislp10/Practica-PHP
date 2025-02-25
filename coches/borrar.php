@@ -25,7 +25,7 @@ $result = mysqli_query($conn, $sql);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Borrar Coches</title>
-    <link rel="stylesheet" href="..\css/text.css">
+    <link rel="stylesheet" href="..\css\text.css">
 </head>
 <?php
 
@@ -63,8 +63,7 @@ if (isset($_SESSION['id_usuario'])) {
                             </ul>
                         </li>
                         </li>
-                        <li><a href='registro\_registro.php'>Regístrate</a>
-                        <li><a href='login\login.php'>Inicia Sesión</a>
+                        <li><a href='..\logout\logout.php'>Cerrar sesión</a>
                     </ul>
                 </nav>";
     } elseif ($_SESSION['tipo_usuario'] === 'vendedor') {
@@ -86,8 +85,7 @@ if (isset($_SESSION['id_usuario'])) {
                             </ul>
                         </li>
                         </li>
-                        <li><a href='registro\_registro.php'>Regístrate</a>
-                        <li><a href='login\login.php'>Inicia Sesión</a>
+                        <li><a href='..\logout\logout.php'>Cerrar sesión</a>
                     </ul>
                 </nav>";
     } else {
@@ -106,8 +104,8 @@ if (isset($_SESSION['id_usuario'])) {
                             <li><a href='..\coches\buscar.php'>Buscar</a></li>
                         </ul>
                     </li>
-                    <li><a href='registro\_registro.php'>Regístrate</a>
-                    <li><a href='login\login.php'>Inicia Sesión</a>
+                    <li><a href='..\_registro\_registro.php'>Regístrate</a>
+                    <li><a href='..\login\login.php'>Inicia Sesión</a>
                 </ul>
             </nav>";
 }

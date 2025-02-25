@@ -7,7 +7,7 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Buscar Coches</title>
-    <link rel="stylesheet" href="..\css/text.css">
+    <link rel="stylesheet" href="..\css\text.css">
 </head>
 <?php
 
@@ -45,7 +45,7 @@ if (isset($_SESSION['id_usuario'])) {
                             </ul>
                         </li>
                         </li>
-                        <li><a href='..\logout\logout.php'>Cerrarr sesión</a>
+                        <li><a href='..\logout\logout.php'>Cerrar sesión</a>
                     </ul>
                 </nav>";
     } elseif ($_SESSION['tipo_usuario'] === 'vendedor') {
@@ -67,7 +67,7 @@ if (isset($_SESSION['id_usuario'])) {
                             </ul>
                         </li>
                         </li>
-                        <li><a href='..\logout\logout.php'>Cerrarr sesión</a>
+                        <li><a href='..\logout\logout.php'>Cerrar sesión</a>
                     </ul>
                 </nav>";
     } elseif ($_SESSION['tipo_usuario'] === 'comprador') {
@@ -88,7 +88,7 @@ if (isset($_SESSION['id_usuario'])) {
                                 <li><a href='..\alquileres\alquileres.php'>Alquileres</a></li>
                             </ul>
                         </li>
-                        <li><a href='..\logout\logout.php'>Cerrarr sesión</a>
+                        <li><a href='..\logout\logout.php'>Cerrar sesión</a>
                     </ul>
                 </nav>";
     } else {
@@ -132,7 +132,10 @@ if (isset($_SESSION['id_usuario'])) {
         <input type="number" name="precio"><br><br>
 
         <label for="alquilado">Alquilado:</label>
-        <input type="checkbox" name="alquilado" value="1"><br><br>
+        <select name="alquilado" required>
+            <option value="Sí">Sí</option>
+            <option value="No">No</option>
+        </select>
         
         <input type="submit" value="Buscar">
     </form>

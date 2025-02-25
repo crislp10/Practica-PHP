@@ -11,7 +11,7 @@ $dbname = "concesionario";
 $conn = mysqli_connect($servername, $username, $password, $dbname)
 or die ("Conexión fallida: " . mysqli_connect_error());
 
-$sql = "SELECT * FROM alquileres";
+$sql = "SELECT * FROM coches";
 $result = mysqli_query($conn, $sql);
 
 ?>
@@ -21,7 +21,13 @@ $result = mysqli_query($conn, $sql);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Listar Alquileres</title>
-    <link rel="stylesheet" href="..\css/text.css">
+    <link rel="stylesheet" href="..\css\text.css">
+    <style>
+    img {
+        width:25%;
+        height:25%;
+    }
+    </style>
 </head>
 <?php
 
@@ -59,7 +65,7 @@ if (isset($_SESSION['id_usuario'])) {
                             </ul>
                         </li>
                         </li>
-                        <li><a href='..\logout\logout.php'>Cerrarr sesión</a>
+                        <li><a href='..\logout\logout.php'>Cerrar sesión</a>
                     </ul>
                 </nav>";
     } elseif ($_SESSION['tipo_usuario'] === 'vendedor') {
@@ -81,7 +87,7 @@ if (isset($_SESSION['id_usuario'])) {
                             </ul>
                         </li>
                         </li>
-                        <li><a href='..\logout\logout.php'>Cerrarr sesión</a>
+                        <li><a href='..\logout\logout.php'>Cerrar sesión</a>
                     </ul>
                 </nav>";
     } elseif ($_SESSION['tipo_usuario'] === 'comprador') {
@@ -102,7 +108,7 @@ if (isset($_SESSION['id_usuario'])) {
                                 <li><a href='..\alquileres\alquileres.php'>Alquileres</a></li>
                             </ul>
                         </li>
-                        <li><a href='..\logout\logout.php'>Cerrarr sesión</a>
+                        <li><a href='..\logout\logout.php'>Cerrar sesión</a>
                     </ul>
                 </nav>";
     } else {
@@ -121,8 +127,8 @@ if (isset($_SESSION['id_usuario'])) {
                             <li><a href='..\coches\buscar.php'>Buscar</a></li>
                         </ul>
                     </li>
-                    <li><a href='registro\_registro.php'>Regístrate</a>
-                    <li><a href='login\login.php'>Inicia Sesión</a>
+                    <li><a href='..\_registro\_registro.php'>Regístrate</a>
+                    <li><a href='..\login\login.php'>Inicia Sesión</a>
                 </ul>
             </nav>";
 }
@@ -132,8 +138,12 @@ if (isset($_SESSION['id_usuario'])) {
         <h2>Sesión iniciada como: <?php echo $_SESSION['nombre']; ?></h2>
         <table>
             <tr>
-                <th>Prestado</th>
-                <th>Devuelto</th>
+                <th>Modelo</th>
+                <th>Marca</th>
+                <th>Color</th>
+                <th>Precio</th>
+                <th>Alquilado</th>
+                <th>Foto</th>
             </tr>
             <?php
             $nfilas = mysqli_num_rows($result);
@@ -141,8 +151,12 @@ if (isset($_SESSION['id_usuario'])) {
                 for ($i=0; $i<$nfilas; $i++) {
                 $resultado = mysqli_fetch_array($result);
                 print ("<TR>\n");
+                print ("<TD>" . $resultado[1] . "</TD>\n");
+                print ("<TD>" . $resultado[2] . "</TD>\n");
                 print ("<TD>" . $resultado[3] . "</TD>\n");
-                print ("<TD>" . $resultado[4] . "</TD>\n");
+                print ("<TD>" . $resultado[4] . " €</TD>\n");
+                print ("<TD>" . $resultado[5] . "</TD>\n");
+                print ("<TD><img src='../coches/" . $resultado[6] . "'></TD>\n");
                 print ("</TR>\n");
              }
 

@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 // Configuración de la base de datos
 $servername = "localhost";
@@ -20,7 +21,13 @@ $result = mysqli_query($conn, $sql);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Listar Coches</title>
-    <link rel="stylesheet" href="..\css/text.css">
+    <link rel="stylesheet" href="../css/text.css">
+    <style>
+    img {
+        width:25%;
+        height:25%;
+    }
+    </style>
 </head>
 <?php
 
@@ -58,7 +65,7 @@ if (isset($_SESSION['id_usuario'])) {
                             </ul>
                         </li>
                         </li>
-                        <li><a href='..\logout\logout.php'>Cerrarr sesión</a>
+                        <li><a href='..\logout\logout.php'>Cerrar sesión</a>
                     </ul>
                 </nav>";
     } elseif ($_SESSION['tipo_usuario'] === 'vendedor') {
@@ -80,7 +87,7 @@ if (isset($_SESSION['id_usuario'])) {
                             </ul>
                         </li>
                         </li>
-                        <li><a href='..\logout\logout.php'>Cerrarr sesión</a>
+                        <li><a href='..\logout\logout.php'>Cerrar sesión</a>
                     </ul>
                 </nav>";
     } elseif ($_SESSION['tipo_usuario'] === 'comprador') {
@@ -101,7 +108,7 @@ if (isset($_SESSION['id_usuario'])) {
                                 <li><a href='..\alquileres\alquileres.php'>Alquileres</a></li>
                             </ul>
                         </li>
-                        <li><a href='..\logout\logout.php'>Cerrarr sesión</a>
+                        <li><a href='..\logout\logout.php'>Cerrar sesión</a>
                     </ul>
                 </nav>";
     } else {
@@ -116,8 +123,8 @@ if (isset($_SESSION['id_usuario'])) {
                     <li><a href='#'>COCHES</a>
                         <ul>
                             <li><a href='..\index.php'>Inicio</a></li>
-                            <li><a href='coches\listar.php'>Listar</a></li>
-                            <li><a href='coches\buscar.php'>Buscar</a></li>
+                            <li><a href='..\coches\listar.php'>Listar</a></li>
+                            <li><a href='..\coches\buscar.php'>Buscar</a></li>
                         </ul>
                     </li>
                     <li><a href='..\_registro\_registro.php'>Regístrate</a>
@@ -147,7 +154,7 @@ if (isset($_SESSION['id_usuario'])) {
                 print ("<TD>" . $resultado[1] . "</TD>\n");
                 print ("<TD>" . $resultado[2] . "</TD>\n");
                 print ("<TD>" . $resultado[3] . "</TD>\n");
-                print ("<TD>" . $resultado[4] . "</TD>\n");
+                print ("<TD>" . $resultado[4] . " €</TD>\n");
                 print ("<TD>" . $resultado[5] . "</TD>\n");
                 print ("<TD><img src='" . $resultado[6] . "'></TD>\n");
                 print ("</TR>\n");

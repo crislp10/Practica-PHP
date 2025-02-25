@@ -38,7 +38,13 @@ $result = mysqli_query($conn, $sql);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Buscar Coches</title>
-    <link rel="stylesheet" href="..\css/text.css">
+    <link rel="stylesheet" href="..\css\text.css">
+    <style>
+    img {
+        width:25%;
+        height:25%;
+    }
+    </style>
 </head>
 <?php
 
@@ -76,7 +82,7 @@ if (isset($_SESSION['id_usuario'])) {
                             </ul>
                         </li>
                         </li>
-                        <li><a href='..\logout\logout.php'>Cerrarr sesión</a>
+                        <li><a href='..\logout\logout.php'>Cerrar sesión</a>
                     </ul>
                 </nav>";
     } elseif ($_SESSION['tipo_usuario'] === 'vendedor') {
@@ -98,7 +104,7 @@ if (isset($_SESSION['id_usuario'])) {
                             </ul>
                         </li>
                         </li>
-                        <li><a href='..\logout\logout.php'>Cerrarr sesión</a>
+                        <li><a href='..\logout\logout.php'>Cerrar sesión</a>
                     </ul>
                 </nav>";
     } elseif ($_SESSION['tipo_usuario'] === 'comprador') {
@@ -119,7 +125,7 @@ if (isset($_SESSION['id_usuario'])) {
                                 <li><a href='..\alquileres\alquileres.php'>Alquileres</a></li>
                             </ul>
                         </li>
-                        <li><a href='..\logout\logout.php'>Cerrarr sesión</a>
+                        <li><a href='..\logout\logout.php'>Cerrar sesión</a>
                     </ul>
                 </nav>";
     } else {
@@ -138,8 +144,8 @@ if (isset($_SESSION['id_usuario'])) {
                             <li><a href='..\coches\buscar.php'>Buscar</a></li>
                         </ul>
                     </li>
-                    <li><a href='registro\_registro.php'>Regístrate</a>
-                    <li><a href='login\login.php'>Inicia Sesión</a>
+                    <li><a href='..\_registro\_registro.php'>Regístrate</a>
+                    <li><a href='..\login\login.php'>Inicia Sesión</a>
                 </ul>
             </nav>";
 }
@@ -177,9 +183,7 @@ if (isset($_SESSION['id_usuario'])) {
             echo "<button type='submit'><a href='buscar.php'>Seguir buscando coches</a></button>";
             
             } else {
-                echo "No se encontró el coche.";
-                echo "<br>";
-                echo "<button type='submit'><a href='buscar.php'>Continuar añadiendo coches</a></button>";
+                echo "<p>No se encontró ningún coche.</p>";
             }
 
             mysqli_close($conn);

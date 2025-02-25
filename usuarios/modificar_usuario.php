@@ -40,7 +40,7 @@ session_start();
                     <li><a href='..\alquileres\alquileres.php'>Alquileres</a></li>
                 </ul>
             </li>
-            <li><a href='..\logout\logout.php'>Cerrarr sesión</a>
+            <li><a href='..\logout\logout.php'>Cerrar sesión</a>
         </ul>
     </nav>
     <div class="content">

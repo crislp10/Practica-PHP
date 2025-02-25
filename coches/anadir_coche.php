@@ -7,7 +7,7 @@ session_start();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Insertar Coches</title>
-    <link rel="stylesheet" href="..\css/text.css">
+    <link rel="stylesheet" href="..\css\text.css">
 </head>
 <?php
 
@@ -45,7 +45,7 @@ if (isset($_SESSION['id_usuario'])) {
                             </ul>
                         </li>
                         </li>
-                        <li><a href='..\logout\logout.php'>Cerrarr sesión</a>
+                        <li><a href='..\logout\logout.php'>Cerrar sesión</a>
                     </ul>
                 </nav>";
     } elseif ($_SESSION['tipo_usuario'] === 'vendedor') {
@@ -67,7 +67,7 @@ if (isset($_SESSION['id_usuario'])) {
                             </ul>
                         </li>
                         </li>
-                        <li><a href='..\logout\logout.php'>Cerrarr sesión</a>
+                        <li><a href='..\logout\logout.php'>Cerrar sesión</a>
                     </ul>
                 </nav>";
     } else {
@@ -86,8 +86,8 @@ if (isset($_SESSION['id_usuario'])) {
                             <li><a href='..\coches\buscar.php'>Buscar</a></li>
                         </ul>
                     </li>
-                    <li><a href='registro\_registro.php'>Regístrate</a>
-                    <li><a href='login\login.php'>Inicia Sesión</a>
+                    <li><a href='..\_registro\_registro.php'>Regístrate</a>
+                    <li><a href='..\_login\login.php'>Inicia Sesión</a>
                 </ul>
             </nav>";
 }
@@ -113,8 +113,7 @@ if (isset($_SESSION['id_usuario'])) {
     $modelo =  $_POST['modelo'];
     $marca =  $_POST['marca'];
     $color = $_POST['color'];
-    $precio = $_POST['precio']; 
-    $alquilado = $_POST['alquilado'];
+    $precio = $_POST['precio'];
     $foto = "";
 
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['foto']) && $_FILES['foto']['size'] > 0) {
@@ -143,7 +142,7 @@ if (isset($_SESSION['id_usuario'])) {
         }
     }
 
-    $sql = "INSERT INTO coches (modelo, marca, color, precio, alquilado, foto) VALUES ('$modelo', '$marca', '$color', '$precio', '$alquilado', '$foto')";
+    $sql = "INSERT INTO coches (modelo, marca, color, precio, alquilado, foto) VALUES ('$modelo', '$marca', '$color', '$precio', 'No', '$foto')";
 
     if (mysqli_query($conn, $sql)) {
         echo "<h2>Coche insertado con éxito.</h2>";
